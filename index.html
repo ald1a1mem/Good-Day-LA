@@ -479,24 +479,6 @@ function onPlayerReady(event) {
 
 function videoLoop() {
   if (!player || typeof player.getCurrentTime !== 'function') return;
-
-  const subEl = document.getElementById("subtitle");
-
-  try {
-    // 💡 安全判斷：先確保 getVideoData 存在且有資料，再檢查是不是廣告
-    const videoData = typeof player.getVideoData === 'function' ? player.getVideoData() : null;
-    const isAd = videoData && videoData.isAd;
-
-    // 如果正在播廣告，隱藏字幕並暫停比對
-    if (isAd) {
-      if (subEl) subEl.style.display = "none";
-      return;
-    }
-  } catch (e) {
-    // 萬一 API 抓取失敗，不做任何動作，繼續讓影片正常播放
-  }
-
-  // 沒播廣告時，正常抓取時間並更新字幕
   const currentTime = player.getCurrentTime();
   updateSubtitle(currentTime);
 }
