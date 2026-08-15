@@ -461,12 +461,12 @@ function onYouTubeIframeAPIReady() {
       'modestbranding': 1, 
       'origin': window.location.origin,
       'fs': 0 
-
-events: { 
-  'onReady': onPlayerReady,
-  'onStateChange': onPlayerStateChange // 👈 監聽影片狀態
+    },
+    events: { 
+      'onReady': onPlayerReady 
+    }
+  });
 }
-
 function onPlayerReady(event) { 
   initTimelineButtons();
   initGithubFavicon(); 
