@@ -461,12 +461,10 @@ function onYouTubeIframeAPIReady() {
       'modestbranding': 1, 
       'origin': window.location.origin,
       'fs': 0 
-    },
-    events: { 
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange // 👈 補上這一行
-    }
-  });
+
+events: { 
+  'onReady': onPlayerReady,
+  'onStateChange': onPlayerStateChange // 👈 監聽影片狀態
 }
 
 function onPlayerReady(event) { 
