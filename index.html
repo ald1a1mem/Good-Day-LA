@@ -141,7 +141,7 @@ const subtitles = [
   { time: 375, text: "MC：還有大家最期待的舞台表演嗎" },
   { time: 377, text: "[韓文翻譯中]" },
   { time: 384, text: "LEO：我們的這首主打歌《BORN DIRE》是一首非常強烈的歌曲" },
-  { time: 393, text: "LEO：還有大家真的可以好好期待有著震撼的歌曲以及電影般的舞台表演" },
+  { time: 388, text: "LEO：還有大家真的可以好好期待有著震撼的歌曲以及電影般的舞台表演" },
   { time: 396, text: "LEO：這首歌講的是朝著目標全速前進的動力" },
   { time: 401, text: "LEO：就算要穿越各種混亂，經歷多少紛擾與波折" },
   { time: 407, text: "LEO：我們都一定會實現那個目標" },
@@ -196,7 +196,7 @@ const subtitles = [
   { time: 600, text: "MC：你們要再展示一些舞蹈給我們看嗎" },
   { time: 604, endTime: 607, text: "LEO：好，我們接下來會做這件事" },
   { time: 608, endTime: 610, text: "沒問題，我們開始吧" },
-  { time: 612, endTime: 610, text: "MC：重點舞蹈" },
+  { time: 612, endTime: 613, text: "MC：重點舞蹈" },
   { time: 615, text: "LEO：站著跳嗎" },
   { time: 616, endTime: 618, text: "展示一下" },
   { time: 619, text: "LEO：不然，額，一起跳嗎，該怎麼做" },
@@ -204,8 +204,8 @@ const subtitles = [
   { time: 627, endTime: 628, text: "LEO：我們再為大家表演一次" },
   { time: 630, text: "LEO：我們要看哪裡" },
   { time: 632, endTime: 634, text: "MC：你可以看這裡，都可以看" },
-  { time: 637, text: "BORN BORN BORN BORN DIRE" },
-  { time: 640, endTime: 642, text: "BORN BORN BORN BORN DIRE" },
+  { time: 637, text: "BORN BORN BORN BORN BORN DIRE" },
+  { time: 640, endTime: 642, text: "BORN BORN BORN BORN BORN DIRE" },
   { time: 643, endTime: 644, text: "LEO：BORN DIRE" },
   { time: 649, text: "MC：我們每個人心裡都住著一隻野獸" },
   { time: 652, text: "MC：ALPHA DRIVE ONE 謝謝你們，為他們歡呼吧" },
@@ -462,7 +462,10 @@ function onYouTubeIframeAPIReady() {
       'origin': window.location.origin,
       'fs': 0 
     },
-    events: { 'onReady': onPlayerReady }
+    events: { 
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange // 👈 補上這一行
+    }
   });
 }
 
@@ -475,7 +478,19 @@ function onPlayerReady(event) {
 }
 
 function videoLoop() {
-  if(!player || typeof player.getCurrentTime !== 'function') return;
+  if (!player || typeof player.getCurrentTime !== 'function') return;
+
+  // 💡 判斷是否正在播放廣告（isVideoLoadedLikeAd 是 YouTube 內建隱藏屬性）
+  const isAd = player.getVideoData && player.getVideoData().isAd;
+  const subEl = document.getElementById("subtitle");
+
+  // 如果正在播廣告，直接把字幕藏起來，不更新字幕
+  if (isAd) {
+    if (subEl) subEl.style.display = "none";
+    return;
+  }
+
+  // 沒播廣告時，才正常抓取時間並更新字幕
   const currentTime = player.getCurrentTime();
   updateSubtitle(currentTime);
 }
