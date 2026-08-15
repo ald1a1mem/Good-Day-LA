@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>260814 Good Day LA 採訪</title>
+
+<!-- 💡 修正：補上 id="custom-favicon" -->
+<link id="custom-favicon" rel="icon" type="image/png" href="https://github.com/ald1a1mem.png">
+
+<script>
+// =========================================================================
+// ✨【大平台設定區】以後換新影片，只需要修改這裡！ ✨
+// =========================================================================
+
+// 1. YouTube 影片 ID（請填入網址 watch?v= 後面那一串 11 位數英文數字）
+const videoId = "m3emn8_L-Z8"; 
+
+// 2. 🐱 你的 GitHub 帳號名稱（User Name）
+const githubUsername = "ald1a1mem"; 
+
+// 3. 右側時間軸捷徑（顯示名稱、要跳轉的時間秒數）
+const timeLinks = [
+   { label: "自我介紹", seconds: 57 },
+   { label: "到洛杉磯和粉絲見面感覺如何", seconds: 105 },
+   { label: "有沒有特別想去的地方或想做的事", seconds: 146 },
+   { label: "稍微透漏與WING合作準備內容", seconds: 184 },
+   { label: "剛出道獲得全球支持，有什麼特別意義嗎", seconds: 252 },
+   { label: "新專輯概念", seconds: 319 },
+   { label: "《EUPHORIA》銷量超過 140 萬", seconds: 485 },
+   { label: "哪個瞬間讓你感到難以置信", seconds: 536 },
+   { label: "《BORN DIRE》重點舞蹈展示", seconds: 632},
+];
+
+// 4. 影片字幕設定（如不需滾動字幕，保持空陣列 [] 即可）
+const subtitles = [
+  { time: 0, text: "MC：歡迎回來到 Good Day LA" },
+  { time: 2, text: "MC：KCON 回到洛杉磯" },
+  { time: 4, text: "MC：帶給我們許多 K-pop 巨星與新星" },
+  { time: 8, text: "MC：ALPHA DRIVE ONE 即將登上 KCON LA 的舞台" },
+  { time: 12, endTime: 15, text: "MC：進行他們在美國的首次現場演出" },
+  { time: 29, text: "MC：這是不是個超棒的 Feel Good Friday" },
+  { time: 31, endTime: 33, text: "MC：大家掌聲鼓勵" },
+  { time: 35, text: "MC：他們不僅在為這場盛會做準備" },
+  { time: 38, text: "MC：團體也即將推出第二張迷你專輯" },
+  { time: 42, endTime: 47, text: "MC：他們今天也來到現場，歡迎 ALPHA DRIVE ONE" },
+  { time: 49, text: "MC：可以請你們先向觀眾做團體打招呼，然後依次自我介紹嗎" },
+  { time: 54, text: "[韓文翻譯中]" },
+  { time: 57, text: "LEO：Good Day LA 的觀眾早上好" },
+  { time: 59, endTime: 61, text: "LEO：我們是\nALPHA DRIVE ONE" },
+  { time: 64, text: "LEO：很高興來到這裡" },
+  { time: 65, endTime: 68, text: "LEO：我是隊長 LEO，Let's Go" },
+  { time: 70, text: "相沅：哈囉，我是相沅" },
+  { time: 71, endTime: 74, text: "相沅：很高興可以來到這裡和你見面" },
+  { time: 76, text: "安信：哈囉，我是安信" },
+  { time: 78, endTime: 80, text: "安信：很高興認識大家" },
+  { time: 82, text: "俊抒：早安洛杉磯" },
+  { time: 83, text: "俊抒：我是俊抒，很高興見到大家" },
+  { time: 86, endTime: 87, text: "俊抒：愛你們" },
+  { time: 91, text: "ARNO：哈囉，我是 ARNO" },
+  { time: 93, endTime: 94, text: "ARNO：很高興能來到這裡" },
+  { time: 97, endTime: 100, text: "鑫隆：嗨，我是鑫隆，早上好" },
+  { time: 101, text: "MC：這是一個很好的早晨" },
+  { time: 102, text: "MC：因為這是你們第一次參加 KCON LA" },
+  { time: 105, text: "MC：終於來到洛杉磯跟美國粉絲見面了，現在感覺如何" },
+  { time: 110, text: "[韓文翻譯中]" },
+  { time: 116, text: "LEO：這是我們團體第一次來洛杉磯" },
+  { time: 119, text: "LEO：也是第一次參加 KCON LA" },
+  { time: 122, text: "LEO：我們非常感激能有這個機會展現自己" },
+  { time: 127, text: "LEO：嗯...這是我們第一次見到美國 ALLYZ" },
+  { time: 131, text: "LEO：我們也希望在這裡吸引到新粉絲" },
+  { time: 133, text: "LEO： 所以我們真的超級期待" },
+  { time: 135, text: "MC：LEO，你們一定可以吸引到很多新粉絲的" },
+  { time: 136, text: "MC：LEO，你們一定可以吸引到很多新粉絲的\nLEO：謝謝妳" },
+  { time: 137, text: "LEO：謝謝妳" },
+  { time: 138, endTime: 139, text: "MC：現在有人正在看" },
+  { time: 143, text: "MC：既然你們知道你們當中有些人是第一次來洛杉磯" },
+  { time: 146, text: "MC：有沒有什麼特別想去的地方或想做的事" },
+  { time: 150, text: "[韓文翻譯中]" },
+  { time: 157, text: "安信:我想去聖塔莫尼卡" },
+  { time: 161, text: "安信：和成員一起\n*這裡只聽清 - 成員 -" },
+  { time: 162, text: "MC：對，聖塔莫尼卡" },
+  { time: 163, text: "安信：我覺得那裡會很有趣" },
+  { time: 166, text: "安信：可以聽好聽的音樂" },
+  { time: 168, text: "安信：一起享受美好的天氣" },
+  { time: 171, text: "安信：我想這樣真的很不錯" },
+  { time: 172, text: "MC：聖塔莫尼卡就在這條街上" },
+  { time: 174, text: "安信：喔，真的嗎" },
+  { time: 175, text: "MC：對，很近" },
+  { time: 176, text: "LEO：我們一定要去" },
+  { time: 179, text: "MC：在這次的 KCON 演出中" },
+  { time: 181, text: "MC：你們將與韓國 Beat boxer Wing 合作" },
+  { time: 184, text: "MC：我知道你們不能透露太多" },
+  { time: 186, text: "MC：但是能不能稍微跟我們透露一下你們一起準備了什麼" },
+  { time: 192, endTime: 200, text: "[韓文翻譯中]" },
+  { time: 201, text: "鑫隆：能和前輩合作是我們的榮幸" },
+  { time: 203, text: "鑫隆：WING前輩其實還為我們創作了 ALPHA DRIVE ONE 的專屬音效" },
+  { time: 210, endTime: 215, text: "鑫隆：如果大家好奇的話，請一定要來觀看 KCON LA" },
+  { time: 217, text: "[英文翻譯中]" },
+  { time: 229, text: "MC：這太酷了" },
+  { time: 231, text: "LEO：透露一點內容" },
+  { time: 235, text: "鑫隆：就像" },
+  { time: 237, endTime: 238, text: "鑫隆：ALPHA DRIVE ONE" },
+  { time: 240, endTime: 241, text: "LEO：那很不錯" },
+  { time: 242, text: "MC：那很不錯" },
+  { time: 243, endTime: 244, text: "MC：ALPHA DRIVE ONE" },
+  { time: 245, text: "MC：只是確認而已 " },
+  { time: 247, text: "MC：KCON 匯聚了來自世界各地的粉絲 " },
+  { time: 252, text: "MC：在剛出道就獲得來自全球的支持，這對你們每一個人來說有什麼特別的意義嗎 " },
+  { time: 258, text: "[韓文翻譯中]" },
+  { time: 267, text: "俊抒：首先能一開始就受到這麼多喜愛，真的非常幸福" },
+  { time: 272, text: "俊抒：從一月出道以來一路馬不停蹄地到現在" },
+  { time: 279, text: "俊抒：粉絲的愛是我們一直以來不曾感到疲憊的動力" },
+  { time: 285, text: "俊抒：以後也會成為我們向前走的力量" },
+  { time: 289, text: "俊抒：ALLYZ，我愛你們" },
+  { time: 292, text: "[英文翻譯中]" },
+  { time: 303, endTime: 305, text: "MC：把支持變成 ALPHA DRIVE ONE 前進的動力" },
+  { time: 308, text: "MC：今年對你們來說是重大的一年" },
+  { time: 310, text: "MC：而這個週末只是一個大月份的開始" },
+  { time: 313, text: "MC：因為" },
+  { time: 314, text: "MC：再過幾週" },
+  { time: 316, text: "MC：你們就要發行第二張迷你專輯了" },
+  { time: 319, text: "MC：可以跟我們聊聊這次新專輯的概念嗎" },
+  { time: 323, text: "[韓文翻譯中]" },
+  { time: 335, text: "LEO：我想，大概再過九天左右就會發行了吧" },
+  { time: 341, text: "LEO：沒剩幾天了" },
+  { time: 342, text: "LEO：但我們真的很期待這次的新歌" },
+  { time: 344, text: "LEO：因為這張專輯為我們開啟了新篇章" },
+  { time: 348, text: "LEO：這次我們會聊到非常多新的內容" },
+  { time: 351, text: "LEO：而且這次真的會向大家展現我們最真實的一面" },
+  { time: 353, text: "LEO：是真的把我們最真實的情感展現出來" },
+  { time: 356, text: "LEO：裡面也會有一些屬於我們自己的小故事" },
+  { time: 359, text: "LEO：所以真的希望大家能多多期待" },
+  { time: 361, text: "LEO：這次也會收錄很多新歌" },
+  { time: 364, text: "LEO：所以請大家敬請期待" },
+  { time: 366, text: "MC：我喜歡" },
+  { time: 367, text: "MC：收錄了很多新歌" },
+  { time: 368, text: "MC：你在 Good Day LA 聽到了吧" },
+  { time: 370, text: "MC：你們的主打歌叫做《BORN DIRE》" },
+  { time: 373, text: "MC：所以能跟我們聊聊這首歌嗎" },
+  { time: 375, text: "MC：還有大家最期待的舞台表演嗎" },
+  { time: 377, text: "[韓文翻譯中]" },
+  { time: 384, text: "LEO：我們的這首主打歌《BORN DIRE》是一首非常強烈的歌曲" },
+  { time: 393, text: "LEO：還有大家真的可以好好期待有著震撼的歌曲以及電影般的舞台表演" },
+  { time: 396, text: "LEO：這首歌講的是朝著目標全速前進的動力" },
+  { time: 401, text: "LEO：就算要穿越各種混亂，經歷多少紛擾與波折" },
+  { time: 407, text: "LEO：我們都一定會實現那個目標" },
+  { time: 409, text: "LEO：這正是我們最想呈現給大家的" },
+  { time: 412, text: "LEO：這首歌和舞台表演，絕對是大家可以好好期待的" },
+  { time: 415, text: "LEO：所以我們自己也非常期待" },
+  { time: 418, text: "LEO：如果可以的話，我們想現場展示一小段舞蹈動作" },
+  { time: 420, text: "MC：當然可以，太棒了" },
+  { time: 423, text: "LEO：這次的新舞蹈是描述我們正在變成野獸" },
+  { time: 430, text: "LEO：我們想要表現出野獸跳動的心臟" },
+  { time: 434, text: "LEO：然後去緊緊捏捏它" },
+  { time: 436, endTime: 437, text: "LEO：對，像那樣" },
+  { time: 438, text: "LEO：太厲害了" },
+  { time: 440, endTime: 441, text: "MC：我根本像是一名伴舞" },
+  { time: 444, text: "MC：太酷了，我很喜歡，我覺得這特別有象徵意義" },
+  { time: 449, text: "MC：我很喜歡這一點" },
+  { time: 450, text: "MC：這種強烈的感染力能讓很多人產生共鳴" },
+  { time: 453, text: "LEO：我覺得這正是 K-pop 的魅力所在" },
+  { time: 456, text: "LEO：我覺得在歌曲裡融入這種象徵意涵" },
+  { time: 460, text: "LEO：像是在舞蹈中展現故事性，同時兼具視覺震撼與深刻意義" },
+  { time: 465, text: "LEO：這正是 K-pop 最核心的魅力" },
+  { time: 468, text: "LEO：也是我們這次非常想呈現給大家的" },
+  { time: 470, text: "MC：我喜歡這個概念" },
+  { time: 471, text: "MC：你們今年初以《EUPHORIA》強勢出道" },
+  { time: 476, endTime: 482, text: "MC：首週銷量就超過 140 萬張" },
+  { time: 484, text: "LEO：太瘋狂了\n俊抒：謝謝妳" },
+  { time: 485, text: "MC：你們這麼早期有預料到這種熱烈反響嗎" },
+  { time: 488, text: "MC：當時是怎麼慶祝的" },
+  { time: 490, text: "[韓文翻譯中]" },
+  { time: 502, text: "俊抒：首先完全沒有預想到" },
+  { time: 505, text: "俊抒：真心感謝大家讓我們一開始就能獲得那麼多愛" },
+  { time: 509, text: "俊抒：既然我們得到了大家這麼多的愛" },
+  { time: 512, text: "俊抒：為了可以報答這份愛" },
+  { time: 514, text: "俊抒：我們會更加努力成為帥氣的藝人" },
+  { time: 518, text: "[英文翻譯中]" },
+  { time: 529, text: "MC：總計擁有數百萬名粉絲\nLEO：謝謝妳" },
+  { time: 531, text: "MC：我想在大家表演前問最後一個問題" },
+  { time: 536, text: "MC：對你們來說哪個瞬間讓你感到難以置信像在做夢" },
+  { time: 539, text: "MC：讓你忍不住感嘆這真的是我的人生嗎" },
+  { time: 542, text: "MC：哇，我不敢相信" },
+  { time: 543, text: "MC：對你們來說有哪些瞬間呢" },
+  { time: 546, text: "[韓文翻譯中]" },
+  { time: 554, text: "ARNO：我的話是我們世界巡迴演出的時候" },
+  { time: 559, text: "ARNO：看到坐滿觀眾的觀眾席和很多的應援棒" },
+  { time: 566, endTime: 571, text: "ARNO：真的，真的很感動" },
+  { time: 572, text: "ARNO：還有看到了那個畫面" },
+  { time: 574, endTime: 579, text: "ARNO：以後要努力表現出更帥氣的舞台" },
+  { time: 580, text: "[英文翻譯中]" },
+  { time: 596, text: "MC：這很特別" },
+  { time: 597, text: "MC：親眼目睹和親身感受" },
+  { time: 599, text: "MC：這很特別" },
+  { time: 600, text: "MC：你們要再展示一些舞蹈給我們看嗎" },
+  { time: 604, endTime: 607, text: "LEO：好，我們接下來會做這件事" },
+  { time: 608, endTime: 610, text: "沒問題，我們開始吧" },
+  { time: 612, endTime: 610, text: "MC：重點舞蹈" },
+  { time: 615, text: "LEO：站著跳嗎" },
+  { time: 616, endTime: 618, text: "展示一下" },
+  { time: 619, text: "LEO：不然，額，一起跳嗎，該怎麼做" },
+  { time: 622, text: "翻譯員：大家一起跳重點舞蹈\n好" },
+  { time: 627, endTime: 628, text: "LEO：我們再為大家表演一次" },
+  { time: 630, text: "LEO：我們要看哪裡" },
+  { time: 632, endTime: 634, text: "MC：你可以看這裡，都可以看" },
+  { time: 637, text: "BORN BORN BORN BORN DIRE" },
+  { time: 640, endTime: 642, text: "BORN BORN BORN BORN DIRE" },
+  { time: 643, endTime: 644, text: "LEO：BORN DIRE" },
+  { time: 649, text: "MC：我們每個人心裡都住著一隻野獸" },
+  { time: 652, text: "MC：ALPHA DRIVE ONE 謝謝你們，為他們歡呼吧" },
+  { time: 656, text: "安信：謝謝大家" },
+  { time: 657, text: "MC：我們很快再見" },
+  { time: 659, text: "MC：你們想說嗎" },
+  { time: 660, text: "MC：1、2、3，我們很快再見" },
+  { time: 661, text: "MC：1、2、3" },
+  { time: 662, endTime: 665, text: "我們很快再見" },
+];
+
+// =========================================================================
+</script>
+
+<style>
+/* 🎨 全域基礎樣式（深色背景） */
+body { 
+  background: #111; 
+  color: white; 
+  text-align: center; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+  margin: 0; 
+  overflow-x: hidden; 
+}
+
+/* 🌟 主題顏色設定（亮藍色風格） */
+:root { 
+  --main-color: #5698c3; 
+}
+
+/* 🔝 標題與字幕控制區 */
+#title { 
+  font-size: 28px; 
+  margin: 20px auto 15px auto; 
+  font-weight: bold; 
+  line-height: 1.5; 
+  max-width: 95%; 
+}
+
+#subtitle-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* 🎬 核心外層大框框：寬度限制為影片寬度，使其完美居中 */
+#main-layout {
+  position: relative;
+  max-width: 640px; 
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#video-wrapper { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  width: 100%; 
+}
+
+/* 🎥 影片容器 */
+#video-container { 
+  position: relative; 
+  width: 100%; 
+  aspect-ratio: 16 / 9; 
+  background: black; 
+  border-radius: 10px; 
+  overflow: hidden; 
+}
+#player, #player iframe { 
+  width: 100%; 
+  height: 100%; 
+  display: block; 
+}
+
+/* 💬 浮動字幕樣式 */
+#subtitle { 
+  position: absolute; 
+  bottom: 12%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 24px; 
+  color: white; 
+  background: rgba(0,0,0,0.65); 
+  padding: 8px 20px; 
+  border-radius: 8px; 
+  white-space: pre-line; 
+  max-width: 70%; 
+  width: fit-content; 
+  pointer-events: none; 
+  z-index: 10; 
+  line-height: 1.4; 
+  display: none;
+  transition: font-size 0.2s ease;
+}
+
+/* 🎯 底部控制列（影片下方只留下全螢幕按鈕） */
+#bottom-block { 
+  width: 100%; 
+  margin-top: 20px; 
+  margin-bottom: 35px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+/* 按鈕通用樣式 */
+.btn {
+  background: var(--main-color); 
+  color: white; 
+  border: none; 
+  padding: 8px 22px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-weight: bold; 
+  transition: 0.3s; 
+  font-size: 15px;
+}
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 主按鈕（全螢幕）加寬加厚 */
+#fullscreenBtn { 
+  padding: 10px 35px;
+  font-size: 16px;
+}
+
+/* 🚪 進入全螢幕後在畫面右下方顯示的「退出全螢幕」按鈕（主色調） */
+#exitFullscreenBtn {
+  display: none; 
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20; 
+  background: var(--main-color); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+#exitFullscreenBtn:hover {
+  filter: brightness(1.1);
+}
+/* 當偵測到全螢幕狀態時，自動強制顯示該按鈕 */
+#video-container:fullscreen #exitFullscreenBtn,
+#video-container:-webkit-full-screen #exitFullscreenBtn {
+  display: block !important;
+}
+
+/* 📜 右側獨立時間軸選單 */
+#timeline-sidebar {
+  position: absolute;
+  left: 680px;      
+  top: 0;
+  width: 280px;
+  height: 360px;    
+  background: #222;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto; 
+  text-align: left;
+}
+
+/* 側欄標題區 */
+#sidebar-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--main-color); 
+  margin-bottom: 5px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+}
+
+#timeline-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 📜 美化側欄滾動條 */
+#timeline-sidebar::-webkit-scrollbar { width: 6px; }
+#timeline-sidebar::-webkit-scrollbar-track { background: #222; }
+#timeline-sidebar::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+#timeline-sidebar::-webkit-scrollbar-thumb:hover { background: var(--main-color); }
+
+/* 📱 RWD 行動裝置自動適應 */
+@media (max-width: 1024px) {
+  #main-layout { max-width: min(95vw, 640px); }
+  #timeline-sidebar {
+    position: static; 
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="title">260814 Good Day LA 採訪</div>
+
+<div id="subtitle-controls">
+  <button class="btn" onclick="adjustSubtitle(4)">放大</button>
+  <button class="btn" onclick="adjustSubtitle(-4)">縮小</button>
+  <button class="btn" onclick="resetSubtitle()">復原</button>
+</div>
+
+<div id="main-layout">
+  
+  <div id="video-wrapper">
+    <div id="video-container">
+      <div id="player"></div>
+      <div id="subtitle"></div>
+      <button id="exitFullscreenBtn" class="btn" onclick="exitFullScreen()">退出全螢幕</button>
+    </div>
+    
+    <div id="bottom-block">
+      <button id="fullscreenBtn" class="btn" onclick="enterFullScreen()">全螢幕</button>
+    </div>
+  </div>
+
+  <div id="timeline-sidebar">
+    <div id="sidebar-title">時間軸目錄</div>
+    <div id="timeline-controls"></div>
+  </div>
+
+</div>
+
+<script>
+let player = null;
+const defaultFontSize = 24; 
+let currentFontSize = defaultFontSize;
+
+// 載入 YouTube API
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("player", {
+    height: "360",
+    width: "640",
+    videoId: videoId,
+    playerVars: { 
+      'autoplay': 0, 
+      'controls': 1, 
+      'rel': 0, 
+      'modestbranding': 1, 
+      'origin': window.location.origin,
+      'fs': 0 
+    },
+    events: { 'onReady': onPlayerReady }
+  });
+}
+
+function onPlayerReady(event) { 
+  initTimelineButtons();
+  initGithubFavicon(); 
+  resetSubtitle();
+  // 💡 建議：調整為 40ms，字幕偵測更順暢
+  setInterval(videoLoop, 40); 
+}
+
+function videoLoop() {
+  if(!player || typeof player.getCurrentTime !== 'function') return;
+  const currentTime = player.getCurrentTime();
+  updateSubtitle(currentTime);
+}
+
+// 🌐 核心功能：動態綁定 GitHub 頭像至 Favicon
+function initGithubFavicon() {
+  if (!githubUsername || githubUsername === "填入你的GitHub帳號") return;
+  
+  const githubAvatarUrl = `https://github.com/${githubUsername}.png`;
+  const faviconEl = document.getElementById("custom-favicon");
+  if (faviconEl) {
+    faviconEl.href = githubAvatarUrl;
+  }
+}
+
+// 更新字幕
+function updateSubtitle(t){
+  if (!subtitles || subtitles.length === 0) return;
+  let text = "";
+  for(let i = subtitles.length - 1; i >= 0; i--){
+    const sub = subtitles[i];
+    if(t >= sub.time){
+      if(sub.endTime && t >= sub.endTime) { text = ""; } 
+      else { text = sub.text; }
+      break; 
+    }
+  }
+  const subEl = document.getElementById("subtitle");
+  if(text === "") { subEl.style.display = "none"; } 
+  else { subEl.style.display = "block"; subEl.innerText = text; }
+}
+
+// 點擊跳轉時間
+function jumpToTime(seconds) {
+  if (player && typeof player.seekTo === 'function') {
+    player.seekTo(seconds, true);
+    if (player.getPlayerState() !== 1) player.playVideo();
+  }
+}
+
+// 生成右側時間軸按鈕
+function initTimelineButtons() {
+  const container = document.getElementById("timeline-controls");
+  if (!container || !timeLinks || timeLinks.length === 0) return;
+  container.innerHTML = "";
+  timeLinks.forEach(link => {
+    const btn = document.createElement("button");
+    btn.innerText = link.label;
+    btn.style.cssText = "background: #333; color: white; border: 1px solid #444; padding: 12px 15px; border-radius: 6px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 14px; width: 100%; text-align: left;";
+    btn.onmouseover = () => { btn.style.background = "var(--main-color)"; btn.style.borderColor = "var(--main-color)"; };
+    btn.onmouseout = () => { btn.style.background = "#333"; btn.style.borderColor = "#444"; };
+    btn.onclick = () => jumpToTime(link.seconds);
+    container.appendChild(btn);
+  });
+}
+
+// 字幕放大縮小功能
+function adjustSubtitle(value) {
+  const subEl = document.getElementById("subtitle");
+  currentFontSize += value;
+  if (currentFontSize < 12) currentFontSize = 12; 
+  if (currentFontSize > 60) currentFontSize = 60; 
+  subEl.style.fontSize = currentFontSize + "px";
+}
+
+// 字幕復原功能
+function resetSubtitle() {
+  const subEl = document.getElementById("subtitle");
+  currentFontSize = defaultFontSize;
+  subEl.style.fontSize = currentFontSize + "px";
+}
+
+// 進入全螢幕
+function enterFullScreen() {
+  const elem = document.getElementById("video-container");
+  let req = elem.requestFullscreen || elem.webkitRequestFullscreen;
+  if (req) req.call(elem);
+}
+
+// 離開全螢幕
+function exitFullScreen() {
+  let exit = document.exitFullscreen || document.webkitExitFullscreen;
+  if (exit) exit.call(document);
+}
+</script>
+</body>
+</html>
